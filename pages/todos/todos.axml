@@ -1,0 +1,58 @@
+<!-- 小程序收藏组件，更多高级用法请参考文档：https://docs.alipay.com/mini/component/component-favorite -->
+<view class="page-todos">
+
+  <view class="user">
+    <image class="avatar" src="{{user.avatar || '../../assets/logo.png'}}" background-size="cover"></image>
+    <view class="nickname">{{user.nickName && user.nickName + '\'s' || 'My'}} 问题反馈</view>
+  </view>
+
+  <form onSubmit="formSubmit" onReset="formReset" class="form">
+
+    <view class="form-item">
+      <view class="title">工单名称</view>
+      <input onInput="inputChanged" data-name="title" class="detail" placeholder="" />
+    </view>
+
+    <view class="form-item">
+      <view class="title">工具编号</view>
+      <input onInput="inputChanged" data-name="orderNo" class="detail"  placeholder="" />
+    </view>
+
+    <view class="form-item">
+      <view class="title">产品名称</view>
+      <input onInput="inputChanged" data-name="productName" class="detail"  placeholder="" />
+    </view>
+
+    <view  class="form-item">
+      <view class="title">紧急程度</view>
+      <radio-group class="detail radio-group" onChange="radioChange" name="radio-group">
+        <label class="radio-item"><radio value="1" checked="{{urgentLevel == 1}}"/>紧急</label>
+        <label class="radio-item"><radio value="0" checked="{{urgentLevel == 0}}"/>不紧急</label>
+      </radio-group>
+    </view>
+
+    <view  class="form-item">
+      <view class="title">紧急原因</view>
+      <input onInput="inputChanged" data-name="urgentMsg" class="detail"  placeholder="" />
+    </view>
+
+    <view  class="form-item">
+      <view class="title">问题描述</view>
+      <input onInput="inputChanged" data-name="content" class="detail"  placeholder="" />
+    </view>
+
+    <view  class="form-item">
+      <view class="title">补充图片</view>
+      <view class="detail upload-img">
+        <button onTap="defaultTap" catchTap="uploadImage">上传图片</button>
+      </view>
+    </view>
+
+    <view class="btn-area">
+      <button type="primary" catchTap="submit">提交</button>
+    </view>
+
+  </form>
+
+
+</view>

@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/todos/todos"
+  ],
+  "window": {
+    "defaultTitle": "Todo App",
+    "titleBarColor": "#323239"
+  }
+}

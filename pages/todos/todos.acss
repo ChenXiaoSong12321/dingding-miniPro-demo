@@ -1,0 +1,65 @@
+.page-todos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100vh;
+  padding: 0 50rpx;
+}
+
+.user {
+  display: flex;
+  flex-shrink: 0;
+  padding: 30px;
+  color: #FFF;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  background-color: #FFF;
+  align-self: center;
+}
+
+.nickname {
+  padding-top: 40rpx;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 100;
+}
+.form{
+  width: 100%;
+  text-align: center；
+}
+.title{
+  color: #FFF;
+  line-height: 40rpx;
+  height: 40rpx;
+  font-size: 26rpx;
+  display: inline;
+  margin-right: 30rpx;
+}
+.form-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.form-item input{
+  border-radius: 5rpx;
+}
+
+.btn-area{
+  margin-top: 50rpx;
+}
+
+.radio-group,.upload-img{
+  width:452rpx;
+}
+.radio-item{
+  color: #FFF;
+  margin-right: 30rpx;
+}
