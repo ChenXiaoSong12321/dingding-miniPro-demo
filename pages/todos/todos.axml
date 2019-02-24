@@ -3,7 +3,7 @@
 
   <view class="user">
     <image class="avatar" src="{{user.avatar || '../../assets/logo.png'}}" background-size="cover"></image>
-    <view class="nickname">{{user.nickName && user.nickName + '\'s' || 'My'}} 问题反馈</view>
+    <view class="nickname">问题反馈</view>
   </view>
 
   <form onSubmit="formSubmit" onReset="formReset" class="form">

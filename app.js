@@ -9,25 +9,28 @@ App({
 
   getUserInfo() {
     return new Promise((resolve, reject) => {
-      if (this.userInfo) resolve(this.userInfo);
+      let token = my.getStorageSync({key:'token'})
+      if (token) {
+        resolve(token)
+        return
+      };
       my.getAuthCode({
         scopes: ['auth_user'],
         success: authcode => {
-          console.info(authcode,'asdf');
-
-          my.getAuthUserInfo({
-            success: res => {
-              console.log(res,'asdf')
-              this.userInfo = res;
-              resolve(this.userInfo);
-            },
-            fail: () => {
-              reject({});
-            },
+          my.httpRequest({
+            url: `http://192.168.0.193:8083/dingtalk/v1/baseInfo/login?code=${authcode.authCode}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function(res) {
+              console.log(res)
+              my.setStorageSync({
+                key: 'token',
+                data: res.data.data.token
+              })
+            }
           });
         },
         fail: () => {
-          console.log(my,'my')
           reject({});
         },
       });
