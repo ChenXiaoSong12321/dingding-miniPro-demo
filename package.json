@@ -1,0 +1,25 @@
+{
+  "name": "company-dingding",
+  "version": "1.0.0",
+  "description": "Todos用来演示如何使用小程序来实现一个简单的任务管理。",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jerry12138/company-dingding.git"
+  },
+  "author": "jerry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jerry12138/company-dingding/issues"
+  },
+  "homepage": "https://github.com/Jerry12138/company-dingding#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-html": "^5.0.3"
+  }
+}

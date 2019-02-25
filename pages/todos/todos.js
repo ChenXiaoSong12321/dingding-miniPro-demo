@@ -9,7 +9,7 @@ Page({
     // 产品名称
     productName:'',
     // 紧急程度
-    urgentLevel:"1",//0 1
+    urgentLevel:0,//0 1
     // 紧急原因
     urgentMsg:'',
     // 问题描述
@@ -21,31 +21,50 @@ Page({
     app.getToken()
   },
   uploadImage(){
-    my.chooseImage({
+    dd.chooseImage({
       count: 9,
-      success: (res) => {
-        console.log(res,res.filePaths[0],'选择图片')
-        my.uploadFile({
-          url: '192.168.0.193:8083/dingtalk/v1/baseInfo/upload',
-          fileType: 'image',
-          fileName: 'file',
-          filePath: res.filePaths[0],
-          success: res => {
-            my.alert({
-              content: '上传成功'
-            });
-          },
-          fail:res=>{
-            console.log(res,'fail')
-          }
-        });
-      },
+      success: res => {
+        const path = (res.filePaths && res.filePaths) || (res.apFilePaths && res.apFilePaths);
+        let uploadPaths = []
+        for(let i = 0,len=path.length;i<len;i++){
+          dd.uploadFile({
+            url: 'http://192.168.0.193:8083/dingtalk/v1/baseInfo/upload',
+            fileType: 'image',
+            fileName: 'file',
+            filePath: path[i],
+            success: res => {
+              console.log(res)
+              if(res.statusCode===200){
+                let data = JSON.parse(res.data)
+                uploadPaths.push(...data.data)
+              }else{
+                dd.alert({ title: `上传失败，请重新上传或联系管理员` })
+              }
+              if(i===len-1){
+                console.log(uploadPaths)
+              }
+            },
+            fail: res=> {
+              dd.alert({ title: `上传失败：${JSON.stringify(res)}` });
+            }
+          })
+
+        }
+      }
     })
   },
   async submit(){
     let token = await app.getToken()
     if(!token)return
-     my.httpRequest({
+    if(this.data.title===''){
+      dd.alert({ title: `工单名称必须要填` })
+      return
+    }
+    if(this.data.content===''){
+      dd.alert({ title: `问题描述必须要填` })
+      return
+    }
+    my.httpRequest({
       url: `192.168.0.193:8083/dingtalk/v1/workOrder?token=${token.data}`,
       method: 'POST',
       data:{

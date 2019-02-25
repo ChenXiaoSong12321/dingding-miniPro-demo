@@ -38,7 +38,7 @@
 
     <view  class="form-item">
       <view class="title">问题描述</view>
-      <input onInput="inputChanged" data-name="content" class="detail"  placeholder="" />
+      <textarea onInput="inputChanged" data-name="content" maxlength="-1" class="detail"  placeholder="" />
     </view>
 
     <view  class="form-item">

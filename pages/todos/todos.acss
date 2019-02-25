@@ -51,6 +51,10 @@
 .form-item input{
   border-radius: 5rpx;
 }
+.form-item textarea{
+  border-radius: 5rpx;
+  width:432rpx;
+}
 
 .btn-area{
   margin-top: 50rpx;
