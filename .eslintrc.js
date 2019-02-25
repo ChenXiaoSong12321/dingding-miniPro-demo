@@ -183,7 +183,8 @@ module.exports = {
     'array-bracket-spacing': [2, 'never']
   },
   "globals": {
-    "wx": true,
+    "dd": true,
+    "my": true,
     "App": true,
     "Page": true,
     "getApp": true,

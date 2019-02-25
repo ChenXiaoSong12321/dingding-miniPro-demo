@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Jerry12138/company-dingding#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint": "^5.14.1",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.2",
