@@ -38,7 +38,7 @@ Page({
               console.log(res)
               if (res.statusCode === 200) {
                 const data = JSON.parse(res.data)
-                uploadPaths.push(...data.data)
+                uploadPaths.push(api.common.apiView({ path: data.data[0] }))
               } else {
                 dd.alert({ title: `上传失败，请重新上传或联系管理员` })
               }
