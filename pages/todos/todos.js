@@ -18,17 +18,7 @@ Page({
     contentImgs:['asfd','asdff'],
   },
   onLoad() {
-    app.getUserInfo().then(
-      _ => {},
-      _ => {
-        my.alert({
-          content: '登录失败'
-        });
-      }
-    );
-  },
-
-  onShow() {
+    app.getToken()
   },
   uploadImage(){
     my.chooseImage({
@@ -40,14 +30,10 @@ Page({
           fileType: 'image',
           fileName: 'file',
           filePath: res.filePaths[0],
-          success: (res) => {
-            console.log(res,'上传图片')
+          success: res => {
             my.alert({
               content: '上传成功'
             });
-          },
-          complete:res=>{
-            console.log(res,'complete')
           },
           fail:res=>{
             console.log(res,'fail')
@@ -57,9 +43,7 @@ Page({
     })
   },
   async submit(){
-    console.log('af',this.data)
-    let token =await app.getUserInfo()
-    console.log(token,'asdf')
+    let token = await app.getToken()
     if(!token)return
      my.httpRequest({
       url: `192.168.0.193:8083/dingtalk/v1/workOrder?token=${token.data}`,
@@ -74,8 +58,10 @@ Page({
         contentImgs:JSON.stringify(this.data.contentImgs),
       },
       dataType: 'json',
-      success: function(res) {
-        
+      success: res=> {
+        my.alert({
+          content: '提交成功'
+        });
       }
     });
   },

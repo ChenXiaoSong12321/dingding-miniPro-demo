@@ -7,7 +7,7 @@ App({
 
   userInfo: null,
 
-  getUserInfo() {
+  getToken() {
     return new Promise((resolve, reject) => {
       let token = my.getStorageSync({key:'token'})
       if (token) {
@@ -22,13 +22,12 @@ App({
             method: 'GET',
             dataType: 'json',
             success: function(res) {
-              console.log(res)
               my.setStorageSync({
                 key: 'token',
                 data: res.data.data.token
               })
             }
-          });
+          })
         },
         fail: () => {
           reject({});
