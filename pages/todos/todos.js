@@ -58,7 +58,7 @@ Page({
     })
   },
   async submit() {
-    const token = await app.getToken()
+    const token = await tools.getToken()
     if (!token) return
     if (this.data.title === '') {
       dd.alert({ title: `工单名称必须要填` })

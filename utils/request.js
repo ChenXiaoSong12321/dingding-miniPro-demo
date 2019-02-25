@@ -1,7 +1,7 @@
 import config from './config'
 
 const request = async(opts, data) => {
-  let requestUrl = config.url + config.urlPre
+  let requestUrl = config.url + config.urlPre + opts.url
   if (opts.query) {
     requestUrl = requestUrl + '?'
     Object.keys(opts.query).forEach((item, index) => {
